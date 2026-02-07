@@ -37,6 +37,12 @@
     select[multiple] {
       height: 140px;
     }
+
+    @media (max-width: 768px) {
+      select[multiple] {
+        height: 100px;
+      }
+    }
   </style>
 </head>
 
@@ -51,7 +57,8 @@
       </div>
 
       <div class="flex gap-2 items-center">
-        <label class="cursor-pointer bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-lg shadow transition flex items-center gap-2 text-xs">
+        <label
+          class="cursor-pointer bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-lg shadow transition flex items-center gap-2 text-xs">
           <i class="fas fa-upload"></i> Arquivo Manual
           <input type="file" id="fileUpload" class="hidden" accept=".xlsx,.xls,.csv">
         </label>
@@ -60,54 +67,65 @@
 
     <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 mb-6">
       <div>
-        <div class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
           <div class="flex bg-slate-100 dark:bg-slate-700/50 p-1 rounded-lg">
             <label class="cursor-pointer">
-              <input type="radio" name="viewType" value="fatura" checked class="hidden peer" onchange="switchViewType('fatura')">
-              <span class="px-4 py-1.5 rounded-md text-sm font-medium transition flex items-center gap-2 text-slate-500 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-slate-600 peer-checked:text-cyan-700 dark:peer-checked:text-white peer-checked:shadow">
+              <input type="radio" name="viewType" value="fatura" checked class="hidden peer"
+                onchange="switchViewType('fatura')">
+              <span
+                class="px-4 py-1.5 rounded-md text-sm font-medium transition flex items-center gap-2 text-slate-500 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-slate-600 peer-checked:text-cyan-700 dark:peer-checked:text-white peer-checked:shadow">
                 <i class="fas fa-file-invoice"></i> Fatura
               </span>
             </label>
             <label class="cursor-pointer">
-              <input type="radio" name="viewType" value="compra" class="hidden peer" onchange="switchViewType('compra')">
-              <span class="px-4 py-1.5 rounded-md text-sm font-medium transition flex items-center gap-2 text-slate-500 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-slate-600 peer-checked:text-emerald-600 dark:peer-checked:text-white peer-checked:shadow">
+              <input type="radio" name="viewType" value="compra" class="hidden peer"
+                onchange="switchViewType('compra')">
+              <span
+                class="px-4 py-1.5 rounded-md text-sm font-medium transition flex items-center gap-2 text-slate-500 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-slate-600 peer-checked:text-emerald-600 dark:peer-checked:text-white peer-checked:shadow">
                 <i class="fas fa-calendar-day"></i> Compra
               </span>
             </label>
           </div>
 
-          <button onclick="resetFilters()" class="text-xs font-bold uppercase text-rose-500 hover:text-rose-700 dark:text-rose-400 dark:hover:text-rose-300 border border-rose-200 dark:border-rose-800 px-3 py-1.5 rounded hover:bg-rose-50 dark:hover:bg-rose-900/20 transition">
+          <button onclick="resetFilters()"
+            class="text-xs font-bold uppercase text-rose-500 hover:text-rose-700 dark:text-rose-400 dark:hover:text-rose-300 border border-rose-200 dark:border-rose-800 px-3 py-1.5 rounded hover:bg-rose-50 dark:hover:bg-rose-900/20 transition">
             Limpar Filtros
           </button>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div>
             <label id="labelMonth" class="block text-xs font-bold mb-1 text-slate-500 dark:text-slate-400">Mês Ref.
               (Fatura)</label>
-            <select id="filterMonth" multiple class="w-full text-sm border border-slate-300 dark:border-slate-600 rounded p-1 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-cyan-500 outline-none font-mono">
+            <select id="filterMonth" multiple
+              class="w-full text-sm border border-slate-300 dark:border-slate-600 rounded p-1 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-cyan-500 outline-none font-mono">
             </select>
           </div>
 
           <div>
             <label class="block text-xs font-bold mb-1 text-blue-600 dark:text-blue-400 uppercase">1. Nome</label>
-            <select id="filterName" multiple class="w-full text-sm border-2 border-blue-100 dark:border-blue-900 rounded p-1 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500 outline-none">
+            <select id="filterName" multiple
+              class="w-full text-sm border-2 border-blue-100 dark:border-blue-900 rounded p-1 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500 outline-none">
             </select>
           </div>
 
           <div>
             <label class="block text-xs font-bold mb-1 text-indigo-600 dark:text-indigo-400 uppercase">2. Classificação
               (Obrigatório)</label>
-            <select id="filterCategory" multiple class="w-full text-sm border-2 border-indigo-100 dark:border-indigo-900 rounded p-1 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none">
+            <select id="filterCategory" multiple
+              class="w-full text-sm border-2 border-indigo-100 dark:border-indigo-900 rounded p-1 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500 outline-none">
             </select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold mb-1 text-slate-500 dark:text-slate-400 uppercase flex justify-between">
+            <label
+              class="block text-xs font-bold mb-1 text-slate-500 dark:text-slate-400 uppercase flex justify-between">
               3. Estabelecimento
               <span id="estLockIcon"><i class="fas fa-unlock text-emerald-500"></i></span>
             </label>
-            <select id="filterEst" multiple class="w-full text-sm border border-slate-300 dark:border-slate-600 rounded p-1 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-slate-500 outline-none">
+            <select id="filterEst" multiple
+              class="w-full text-sm border border-slate-300 dark:border-slate-600 rounded p-1 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-slate-500 outline-none">
             </select>
           </div>
         </div>
@@ -115,18 +133,22 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 border-l-4 border-l-cyan-500">
-        <p class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 tracking-wider mb-1" id="kpiTotalLabel">
+      <div
+        class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 border-l-4 border-l-cyan-500">
+        <p class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 tracking-wider mb-1"
+          id="kpiTotalLabel">
           Total Fatura</p>
         <h2 class="text-2xl font-bold text-cyan-700 dark:text-cyan-400" id="kpiTotal">...</h2>
       </div>
 
-      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 border-l-4 border-l-emerald-500">
+      <div
+        class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 border-l-4 border-l-emerald-500">
         <p class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 tracking-wider mb-1">Média</p>
         <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400" id="kpiAverage">...</h2>
       </div>
 
-      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 border-l-4 border-l-violet-500">
+      <div
+        class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 border-l-4 border-l-violet-500">
         <p class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 tracking-wider mb-1">Qtd.</p>
         <h2 class="text-2xl font-bold text-violet-700 dark:text-violet-400" id="kpiCount">...</h2>
       </div>
@@ -134,12 +156,14 @@
 
     <!-- Linha 1: Distribuição e Top 10 -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 h-full">
+      <div
+        class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 h-full">
         <h3 class="font-bold text-sm uppercase mb-2 text-amber-600 dark:text-amber-400">Distribuição</h3>
         <div id="pieChart" style="width:100%; height:300px;"></div>
       </div>
 
-      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 h-full">
+      <div
+        class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 h-full">
         <h3 class="font-bold text-sm uppercase mb-2 text-emerald-700 dark:text-emerald-400">Top 8 Estabelecimentos</h3>
         <div id="topEstChart" style="width:100%; height:300px;"></div>
       </div>
@@ -147,22 +171,28 @@
 
     <!-- Linha 2: Evolução (Temporal e Categoria) -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
-      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 h-full">
+      <div
+        class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 h-full">
         <h3 class="font-bold text-sm uppercase mb-2 text-cyan-700 dark:text-cyan-400">Distribuição Mensal</h3>
         <div id="evolutionDateChart" style="width:100%; height:300px;"></div>
       </div>
 
-      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 h-full">
+      <div
+        class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 h-full">
         <h3 class="font-bold text-sm uppercase mb-2 text-cyan-700 dark:text-cyan-400">Gasto Anual</h3>
         <div id="evolutionCategoryChart" style="width:100%; height:300px;"></div>
       </div>
     </div>
   </div>
 
-  <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden mb-8 mx-[14px]">
-    <div class="p-4 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex justify-between items-center">
+  <div
+    class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden mb-8 mx-[14px]">
+    <div
+      class="p-4 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex justify-between items-center">
       <h3 class="font-bold text-sm text-slate-700 dark:text-slate-200">Extrato Detalhado</h3>
-      <span class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-300 bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded">Top 200</span>
+      <span
+        class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-300 bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded">Top
+        200</span>
     </div>
 
     <div class="overflow-x-auto max-h-[400px] p-0 pt-0">
